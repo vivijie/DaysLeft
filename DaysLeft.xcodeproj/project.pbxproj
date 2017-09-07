@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2828C33F1F61102900BC9DC9 /* RepeatPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828C33E1F61102900BC9DC9 /* RepeatPickerViewController.swift */; };
+		28D0BD981F5FC6AA00CADE5E /* AddBigDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D0BD971F5FC6AA00CADE5E /* AddBigDayViewController.swift */; };
 		C59D6A4F1F52782700CFACF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A4E1F52782700CFACF5 /* AppDelegate.swift */; };
-		C59D6A511F52782700CFACF5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A501F52782700CFACF5 /* ViewController.swift */; };
 		C59D6A541F52782700CFACF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59D6A521F52782700CFACF5 /* Main.storyboard */; };
 		C59D6A571F52782700CFACF5 /* DaysLeft.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A551F52782700CFACF5 /* DaysLeft.xcdatamodeld */; };
 		C59D6A591F52782700CFACF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C59D6A581F52782700CFACF5 /* Assets.xcassets */; };
 		C59D6A5C1F52782700CFACF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59D6A5A1F52782700CFACF5 /* LaunchScreen.storyboard */; };
+		C59D6A661F52787F00CFACF5 /* BigDaysTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A651F52787F00CFACF5 /* BigDaysTableViewController.swift */; };
+		C59D6A691F527E4500CFACF5 /* BigDay+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A671F527E4500CFACF5 /* BigDay+CoreDataClass.swift */; };
+		C59D6A6A1F527E4500CFACF5 /* BigDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A681F527E4500CFACF5 /* BigDay+CoreDataProperties.swift */; };
+		C59D6A6C1F52B15600CFACF5 /* BigDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A6B1F52B15600CFACF5 /* BigDayTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2828C33E1F61102900BC9DC9 /* RepeatPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatPickerViewController.swift; sourceTree = "<group>"; };
+		28D0BD971F5FC6AA00CADE5E /* AddBigDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBigDayViewController.swift; sourceTree = "<group>"; };
 		C59D6A4B1F52782600CFACF5 /* DaysLeft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaysLeft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C59D6A4E1F52782700CFACF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C59D6A501F52782700CFACF5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C59D6A531F52782700CFACF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C59D6A561F52782700CFACF5 /* DaysLeft.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DaysLeft.xcdatamodel; sourceTree = "<group>"; };
 		C59D6A581F52782700CFACF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C59D6A5B1F52782700CFACF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C59D6A5D1F52782700CFACF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C59D6A651F52787F00CFACF5 /* BigDaysTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigDaysTableViewController.swift; sourceTree = "<group>"; };
+		C59D6A671F527E4500CFACF5 /* BigDay+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigDay+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C59D6A681F527E4500CFACF5 /* BigDay+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigDay+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C59D6A6B1F52B15600CFACF5 /* BigDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigDayTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +66,17 @@
 		C59D6A4D1F52782600CFACF5 /* DaysLeft */ = {
 			isa = PBXGroup;
 			children = (
-				C59D6A4E1F52782700CFACF5 /* AppDelegate.swift */,
-				C59D6A501F52782700CFACF5 /* ViewController.swift */,
+				C59D6A671F527E4500CFACF5 /* BigDay+CoreDataClass.swift */,
+				C59D6A681F527E4500CFACF5 /* BigDay+CoreDataProperties.swift */,
+				C59D6A651F52787F00CFACF5 /* BigDaysTableViewController.swift */,
+				C59D6A6B1F52B15600CFACF5 /* BigDayTableViewCell.swift */,
 				C59D6A521F52782700CFACF5 /* Main.storyboard */,
+				28D0BD971F5FC6AA00CADE5E /* AddBigDayViewController.swift */,
+				2828C33E1F61102900BC9DC9 /* RepeatPickerViewController.swift */,
 				C59D6A581F52782700CFACF5 /* Assets.xcassets */,
-				C59D6A5A1F52782700CFACF5 /* LaunchScreen.storyboard */,
 				C59D6A5D1F52782700CFACF5 /* Info.plist */,
+				C59D6A4E1F52782700CFACF5 /* AppDelegate.swift */,
+				C59D6A5A1F52782700CFACF5 /* LaunchScreen.storyboard */,
 				C59D6A551F52782700CFACF5 /* DaysLeft.xcdatamodeld */,
 			);
 			path = DaysLeft;
@@ -139,9 +154,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C59D6A511F52782700CFACF5 /* ViewController.swift in Sources */,
+				28D0BD981F5FC6AA00CADE5E /* AddBigDayViewController.swift in Sources */,
+				C59D6A661F52787F00CFACF5 /* BigDaysTableViewController.swift in Sources */,
+				2828C33F1F61102900BC9DC9 /* RepeatPickerViewController.swift in Sources */,
+				C59D6A6C1F52B15600CFACF5 /* BigDayTableViewCell.swift in Sources */,
+				C59D6A691F527E4500CFACF5 /* BigDay+CoreDataClass.swift in Sources */,
 				C59D6A571F52782700CFACF5 /* DaysLeft.xcdatamodeld in Sources */,
 				C59D6A4F1F52782700CFACF5 /* AppDelegate.swift in Sources */,
+				C59D6A6A1F527E4500CFACF5 /* BigDay+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +301,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J49MZ45WGA;
 				INFOPLIST_FILE = DaysLeft/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tdones.DaysLeft;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -296,6 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J49MZ45WGA;
 				INFOPLIST_FILE = DaysLeft/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tdones.DaysLeft;
 				PRODUCT_NAME = "$(TARGET_NAME)";
