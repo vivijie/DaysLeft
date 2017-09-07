@@ -77,18 +77,25 @@ class BigDayTableViewCell: UITableViewCell {
             diffDays = dateCreatedComponents - dateNowComponents
             
             if diffDays < 0 {
-                diffDays = getRangeDays(rangeType: .month) + diffDays
+                diffDays = getRangeDays(rangeType: .month) - dateCreatedComponents + dateNowComponents
             }
             
-        } else if repeatKind == "Year" {            
-            let dateNowComponents = NSCalendar.current.component(Calendar.Component.day, from: dateNow)
-            let dateCreatedComponents = NSCalendar.current.component(Calendar.Component.day, from: dateCreated)
+        } else if repeatKind == "Year" {
+            let calendar = Calendar.current
+            let yearNow = NSCalendar.current.component(Calendar.Component.year, from: dateNow)
+            let month = NSCalendar.current.component(Calendar.Component.month, from: dateCreated)
+            let day = NSCalendar.current.component(Calendar.Component.day, from: dateCreated)
             
-            diffDays = dateCreatedComponents - dateNowComponents
+            let dateComponentsDueNextYear = DateComponents(year: yearNow, month: month, day: day)
+            let dateDueNextYear = calendar.date(from: dateComponentsDueNextYear)
+            let dateNowInit = calendar.startOfDay(for: dateNow)
+            
+            diffDays = Int(dateDueNextYear!.timeIntervalSince(dateNowInit) / (60*60*24))
             
             if diffDays < 0 {
-                diffDays = getRangeDays(rangeType: .year) + diffDays
+                diffDays += getRangeDays(rangeType: .year)
             }
+            
         } else {
             diffDays = 8888
         }
@@ -106,6 +113,7 @@ class BigDayTableViewCell: UITableViewCell {
         
         let range = calendar.range(of: .day, in: rangeType, for: date!)!
         let numDays = range.count
+        print("numDays: \(numDays)")
         return numDays
     }
     
