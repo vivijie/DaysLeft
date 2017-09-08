@@ -141,8 +141,6 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        print("didSelectRowAt: section\(indexPath.section), row\(indexPath.row)")
-        
         textField.resignFirstResponder()
         
         if indexPath.section == 2 && indexPath.row == 0 {
@@ -163,7 +161,6 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
             tableView.deleteRows(at: [indexPathDatePicker as IndexPath], with: .fade)
             tableView.endUpdates()
         }
-        print("hiding")
     }
     
     func showDatePicker() {
@@ -174,7 +171,6 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
         tableView.insertRows(at: [indexPathDatePicker as IndexPath], with: .fade)
         
         datePicker.setDate(dueDate, animated: false)
-        print("showing")
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {

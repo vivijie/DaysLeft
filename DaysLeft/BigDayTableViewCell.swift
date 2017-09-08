@@ -26,32 +26,33 @@ class BigDayTableViewCell: UITableViewCell {
     private func updateUI() {
         title?.text = bigday?.title
         
-        if let theDate = bigday?.big_date {
-            guard let days = bigday?.diffDays(dateNow: dateNow) else {
-                return
-            }
-            
-            
-            if days > 0 {
-                leftDays?.text = String(days)
-                leftDayTag?.text = "DAYS LEFT"
-            } else {
-                leftDays?.text = String(-(days))
-                leftDayTag?.text = "DAYS UNTIL"
-                leftDayTag?.textColor = UIColor.brown
-                leftDays?.textColor = UIColor.brown
-            }
-            
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .short
-            
-            bigDate?.text = formatter.string(from: theDate)
+        guard let days = bigday?.diffDays(dateNow: dateNow) else {
+            return
+        }
+        
+        if days > 0 {
+            leftDays?.text = String(days)
+            leftDayTag?.text = "DAYS LEFT"
         } else {
-            bigDate?.text = nil
+            leftDays?.text = String(-(days))
+            leftDayTag?.text = "DAYS UNTIL"
+            leftDayTag?.textColor = UIColor.brown
+            leftDays?.textColor = UIColor.brown
+        }
+        
+        if let theDate = bigday?.big_date {
+            bigDate?.text = formatDate(theDate: theDate)
+        } else {
+            bigDate?.text = ""
         }
     }
     
-
-    
+    private func formatDate(theDate: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        let formatResultString = formatter.string(from: theDate)
+        
+        return formatResultString
+    }
 }

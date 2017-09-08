@@ -86,7 +86,6 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
         }
-        print("Edited: \(item)")
         
         sortByDaysLeft()
         self.tableView.reloadData()
@@ -109,15 +108,11 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
         
         let managedContext = appDelegate.persistentContainer.viewContext
         
-        print(bigdays.count)
-        print(dayToDelete)
-        
         managedContext.delete(dayToDelete)
         bigdays.remove(at: indexPath.row)
         
         do {
             try managedContext.save()
-            print(bigdays.count)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         } catch let error as NSError {
             print("Saving error: \(error), description: \(error.userInfo)")
@@ -173,9 +168,6 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
     }
     
     func sortByDaysLeft() {
-//        // Sort by Title
-//        let sorteBigDays = bigdays.sorted  { $0.title?.localizedCaseInsensitiveCompare($1.title!) == ComparisonResult.orderedAscending }
-        
         let dateNowNow = Date()
         var bigDayDaysLeft = [BigDay]()
         var bigDayDaysUntil = [BigDay]()

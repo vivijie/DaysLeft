@@ -89,8 +89,7 @@ extension BigDay {
         
         let range = calendar.range(of: .day, in: rangeType, for: date!)!
         let numDays = range.count
-        print("dateNow: \(dateNow)")
-        print("numDays: \(numDays)")
+        
         return numDays
     }
 
