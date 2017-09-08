@@ -167,4 +167,18 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
             }
         }
     }
+    
+    // Sorting Rows
+    
+    @IBAction func menuButton(_ sender: UIBarButtonItem) {
+        sortByDaysLeft()
+    }
+    
+    func sortByDaysLeft() {
+        let sorteBigDays = bigdays.sorted  { $0.title?.localizedCaseInsensitiveCompare($1.title!) == ComparisonResult.orderedAscending }
+        
+        bigdays = sorteBigDays
+        
+        tableView.reloadData()
+    }
 }

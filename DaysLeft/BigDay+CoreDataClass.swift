@@ -12,5 +12,7 @@ import CoreData
 
 @objc(BigDay)
 public class BigDay: NSManagedObject {
-
+    
+    
+  
 }

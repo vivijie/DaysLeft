@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XW1-wK-l6e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XW1-wK-l6e">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -103,7 +103,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="All Days" id="kkh-3T-MDJ">
-                        <barButtonItem key="leftBarButtonItem" title="Setting" image="menuBtn_Nav" id="zZw-aJ-hSf"/>
+                        <barButtonItem key="leftBarButtonItem" title="Setting" image="menuBtn_Nav" id="zZw-aJ-hSf">
+                            <connections>
+                                <action selector="menuButton:" destination="Mn5-Sr-p5H" id="SjV-2R-0ze"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="q4M-MY-kvD">
                             <connections>
                                 <segue destination="Ovu-5V-b0b" kind="presentation" identifier="AddBigDay" id="VJC-KL-BD1"/>
