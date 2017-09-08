@@ -175,9 +175,16 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
     }
     
     func sortByDaysLeft() {
-        let sorteBigDays = bigdays.sorted  { $0.title?.localizedCaseInsensitiveCompare($1.title!) == ComparisonResult.orderedAscending }
+//        // Sort by Title
+//        let sorteBigDays = bigdays.sorted  { $0.title?.localizedCaseInsensitiveCompare($1.title!) == ComparisonResult.orderedAscending }
         
-        bigdays = sorteBigDays
+        let dateNowNow = Date()
+        
+        // Sort by diff days
+        let sortedBigDaysByDiffDays = bigdays.sorted { $0.diffDays(dateNow: dateNowNow) < $1.diffDays(dateNow: dateNowNow) }
+        
+        
+        bigdays = sortedBigDaysByDiffDays
         
         tableView.reloadData()
     }
