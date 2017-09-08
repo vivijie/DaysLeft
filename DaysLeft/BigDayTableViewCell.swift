@@ -30,12 +30,16 @@ class BigDayTableViewCell: UITableViewCell {
             guard let days = bigday?.diffDays(dateNow: dateNow) else {
                 return
             }
-            leftDays?.text = String(days)
+            
             
             if days > 0 {
+                leftDays?.text = String(days)
                 leftDayTag?.text = "DAYS LEFT"
             } else {
+                leftDays?.text = String(-(days))
                 leftDayTag?.text = "DAYS UNTIL"
+                leftDayTag?.textColor = UIColor.brown
+                leftDays?.textColor = UIColor.brown
             }
             
             let formatter = DateFormatter()
