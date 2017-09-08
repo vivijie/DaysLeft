@@ -31,17 +31,13 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
         
         let fetchRequest:NSFetchRequest<BigDay> = BigDay.fetchRequest()
         
-        // Sorting
-//        let sortDescriptor = NSSortDescriptor(key: BigDay.title, ascending: true)
-//        
-//        fetchRequest.sortDescriptors = [sortDescriptor]
-        
         do {
             bigdays = try managedContext.fetch(fetchRequest)
-            
+            sortByDaysLeft()
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
+        
     }
     
     
@@ -71,6 +67,7 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
             print("Could not save. \(error), \(error.userInfo)")
         }
         
+        sortByDaysLeft()
         self.tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
@@ -91,33 +88,11 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
         }
         print("Edited: \(item)")
         
+        sortByDaysLeft()
         self.tableView.reloadData()
         dismiss(animated: true, completion: nil)
     }
     
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return bigdays.count
-    }
-
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-    
-        let day = bigdays[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "BigDayOne", for: indexPath)
-        
-        if let bigdayTableViewCell = cell as? BigDayTableViewCell {
-            bigdayTableViewCell.bigday = day
-        }
-        return cell
-    }
     
     // Delete Row
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -149,6 +124,29 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
         }
     }
     
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return bigdays.count
+    }
+
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+    
+        let day = bigdays[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BigDayOne", for: indexPath)
+        
+        if let bigdayTableViewCell = cell as? BigDayTableViewCell {
+            bigdayTableViewCell.bigday = day
+        }
+        return cell
+    }
     
     // Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -179,13 +177,25 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
 //        let sorteBigDays = bigdays.sorted  { $0.title?.localizedCaseInsensitiveCompare($1.title!) == ComparisonResult.orderedAscending }
         
         let dateNowNow = Date()
+        var bigDayDaysLeft = [BigDay]()
+        var bigDayDaysUntil = [BigDay]()
+        
+        // Check dyas left(+, >= 0) or days until(-, < 0)
+        for bigDay in bigdays {
+            if bigDay.diffDays(dateNow: dateNowNow) >= 0 {
+                bigDayDaysLeft.append(bigDay)
+            } else {
+                bigDayDaysUntil.append(bigDay)
+            }
+        }
         
         // Sort by diff days
-        let sortedBigDaysByDiffDays = bigdays.sorted { $0.diffDays(dateNow: dateNowNow) < $1.diffDays(dateNow: dateNowNow) }
+        let sortedBigDaysLeftByDiffDays = bigDayDaysLeft.sorted { $0.diffDays(dateNow: dateNowNow) < $1.diffDays(dateNow: dateNowNow) }
+        let sortedBigDaysUntilByDiffDays = bigDayDaysUntil.sorted { $0.diffDays(dateNow: dateNowNow) > $1.diffDays(dateNow: dateNowNow) }
         
         
-        bigdays = sortedBigDaysByDiffDays
+        bigdays = sortedBigDaysLeftByDiffDays + sortedBigDaysUntilByDiffDays
         
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
 }
