@@ -30,7 +30,7 @@ class BigDayTableViewCell: UITableViewCell {
             return
         }
         
-        if days > 0 {
+        if days >= 0 {
             leftDays?.text = String(days)
             leftDayTag?.text = "DAYS LEFT"
         } else {

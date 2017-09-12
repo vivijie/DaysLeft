@@ -1,54 +1,111 @@
 {
   "images" : [
     {
-      "idiom" : "iphone",
       "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "iPhone Notification 2x20.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "iphone",
       "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "iPhone Notification 3x20.png",
       "scale" : "3x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "AppIcon29x29@2x.png",
+      "filename" : "Setting 29 x 2-1.png",
       "scale" : "2x"
     },
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "AppIcon29x29@3x.png",
+      "filename" : "Setting 29 x 3.png",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "AppIcon40x40@2x.png",
+      "filename" : "spolight-40x2-1.png",
       "scale" : "2x"
     },
     {
       "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "AppIcon40x40@3x.png",
+      "filename" : "spolight-40x3.png",
       "scale" : "3x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "AppIcon60x60@2x.png",
+      "filename" : "Days-Icon-第二版-120.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "AppIcon60x60@3x.png",
+      "filename" : "Days-Icon-第二版-180.png",
       "scale" : "3x"
     },
     {
-      "idiom" : "ios-marketing",
+      "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "iPhone Notification 1x20.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "iPhone Notification 2x20-1.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "Setting 29 x 1.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "Setting 29 x 2.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "spolight-40x1.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "spolight-40x2.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "Days-Icon-第二版-iPad 76 x 1.png",
+      "scale" : "1x"
+    },
+    {
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "Days-Icon-第二版-iPad 76 x 2.png",
+      "scale" : "2x"
+    },
+    {
+      "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "Days-Icon-第二版-iPad 83.5 x 2.png",
+      "scale" : "2x"
+    },
+    {
       "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "AppStore1024.png",
       "scale" : "1x"
     }
   ],
