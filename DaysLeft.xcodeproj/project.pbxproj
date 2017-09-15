@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2828C33F1F61102900BC9DC9 /* RepeatPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828C33E1F61102900BC9DC9 /* RepeatPickerViewController.swift */; };
+		287F07F81F6BAE39000FC644 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287F07F71F6BAE39000FC644 /* NotificationCenter.framework */; };
+		287F07FB1F6BAE39000FC644 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F07FA1F6BAE39000FC644 /* TodayViewController.swift */; };
+		287F07FE1F6BAE39000FC644 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287F07FC1F6BAE39000FC644 /* MainInterface.storyboard */; };
+		287F08021F6BAE39000FC644 /* DaysLeft Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 287F07F51F6BAE39000FC644 /* DaysLeft Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		28D0BD981F5FC6AA00CADE5E /* AddBigDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D0BD971F5FC6AA00CADE5E /* AddBigDayViewController.swift */; };
 		C59D6A4F1F52782700CFACF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A4E1F52782700CFACF5 /* AppDelegate.swift */; };
 		C59D6A541F52782700CFACF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59D6A521F52782700CFACF5 /* Main.storyboard */; };
@@ -20,8 +24,37 @@
 		C59D6A6C1F52B15600CFACF5 /* BigDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A6B1F52B15600CFACF5 /* BigDayTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		287F08001F6BAE39000FC644 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C59D6A431F52782600CFACF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 287F07F41F6BAE39000FC644;
+			remoteInfo = "DaysLeft Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		287F08061F6BAE39000FC644 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				287F08021F6BAE39000FC644 /* DaysLeft Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2828C33E1F61102900BC9DC9 /* RepeatPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatPickerViewController.swift; sourceTree = "<group>"; };
+		287F07F51F6BAE39000FC644 /* DaysLeft Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DaysLeft Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		287F07F71F6BAE39000FC644 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		287F07FA1F6BAE39000FC644 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		287F07FD1F6BAE39000FC644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		287F07FF1F6BAE39000FC644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28D0BD971F5FC6AA00CADE5E /* AddBigDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBigDayViewController.swift; sourceTree = "<group>"; };
 		C59D6A4B1F52782600CFACF5 /* DaysLeft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DaysLeft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C59D6A4E1F52782700CFACF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +70,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		287F07F21F6BAE39000FC644 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				287F07F81F6BAE39000FC644 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C59D6A481F52782600CFACF5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,10 +88,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		287F07F61F6BAE39000FC644 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				287F07F71F6BAE39000FC644 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		287F07F91F6BAE39000FC644 /* DaysLeft Extension */ = {
+			isa = PBXGroup;
+			children = (
+				287F07FA1F6BAE39000FC644 /* TodayViewController.swift */,
+				287F07FC1F6BAE39000FC644 /* MainInterface.storyboard */,
+				287F07FF1F6BAE39000FC644 /* Info.plist */,
+			);
+			path = "DaysLeft Extension";
+			sourceTree = "<group>";
+		};
 		C59D6A421F52782600CFACF5 = {
 			isa = PBXGroup;
 			children = (
 				C59D6A4D1F52782600CFACF5 /* DaysLeft */,
+				287F07F91F6BAE39000FC644 /* DaysLeft Extension */,
+				287F07F61F6BAE39000FC644 /* Frameworks */,
 				C59D6A4C1F52782600CFACF5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				C59D6A4B1F52782600CFACF5 /* DaysLeft.app */,
+				287F07F51F6BAE39000FC644 /* DaysLeft Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,6 +147,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		287F07F41F6BAE39000FC644 /* DaysLeft Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 287F08051F6BAE39000FC644 /* Build configuration list for PBXNativeTarget "DaysLeft Extension" */;
+			buildPhases = (
+				287F07F11F6BAE39000FC644 /* Sources */,
+				287F07F21F6BAE39000FC644 /* Frameworks */,
+				287F07F31F6BAE39000FC644 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "DaysLeft Extension";
+			productName = "DaysLeft Extension";
+			productReference = 287F07F51F6BAE39000FC644 /* DaysLeft Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		C59D6A4A1F52782600CFACF5 /* DaysLeft */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C59D6A601F52782700CFACF5 /* Build configuration list for PBXNativeTarget "DaysLeft" */;
@@ -92,10 +171,12 @@
 				C59D6A471F52782600CFACF5 /* Sources */,
 				C59D6A481F52782600CFACF5 /* Frameworks */,
 				C59D6A491F52782600CFACF5 /* Resources */,
+				287F08061F6BAE39000FC644 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				287F08011F6BAE39000FC644 /* PBXTargetDependency */,
 			);
 			name = DaysLeft;
 			productName = DaysLeft;
@@ -112,6 +193,10 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = tdones;
 				TargetAttributes = {
+					287F07F41F6BAE39000FC644 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Automatic;
+					};
 					C59D6A4A1F52782600CFACF5 = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
@@ -132,11 +217,20 @@
 			projectRoot = "";
 			targets = (
 				C59D6A4A1F52782600CFACF5 /* DaysLeft */,
+				287F07F41F6BAE39000FC644 /* DaysLeft Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		287F07F31F6BAE39000FC644 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				287F07FE1F6BAE39000FC644 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C59D6A491F52782600CFACF5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -150,6 +244,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		287F07F11F6BAE39000FC644 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				287F07FB1F6BAE39000FC644 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C59D6A471F52782600CFACF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -167,7 +269,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		287F08011F6BAE39000FC644 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 287F07F41F6BAE39000FC644 /* DaysLeft Extension */;
+			targetProxy = 287F08001F6BAE39000FC644 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		287F07FC1F6BAE39000FC644 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				287F07FD1F6BAE39000FC644 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		C59D6A521F52782700CFACF5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -187,6 +305,36 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		287F08031F6BAE39000FC644 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J49MZ45WGA;
+				INFOPLIST_FILE = "DaysLeft Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tdones.DaysLeft.DaysLeft-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		287F08041F6BAE39000FC644 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = J49MZ45WGA;
+				INFOPLIST_FILE = "DaysLeft Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tdones.DaysLeft.DaysLeft-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		C59D6A5E1F52782700CFACF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -297,6 +445,7 @@
 		C59D6A611F52782700CFACF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J49MZ45WGA;
@@ -313,6 +462,7 @@
 		C59D6A621F52782700CFACF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J49MZ45WGA;
@@ -329,6 +479,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		287F08051F6BAE39000FC644 /* Build configuration list for PBXNativeTarget "DaysLeft Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				287F08031F6BAE39000FC644 /* Debug */,
+				287F08041F6BAE39000FC644 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C59D6A461F52782600CFACF5 /* Build configuration list for PBXProject "DaysLeft" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XW1-wK-l6e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XW1-wK-l6e">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pgW-qG-ynO" id="BER-5D-rO6">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAF-Ij-BSZ">
@@ -179,7 +179,9 @@
                                                 <constraint firstItem="V5Z-kQ-Mnb" firstAttribute="baseline" secondItem="BKH-7w-YRE" secondAttribute="baseline" id="JEB-Mn-NUs"/>
                                                 <constraint firstItem="V5Z-kQ-Mnb" firstAttribute="centerY" secondItem="6NK-cH-80I" secondAttribute="centerY" id="LhY-Nx-G1e"/>
                                                 <constraint firstItem="BKH-7w-YRE" firstAttribute="trailing" secondItem="6NK-cH-80I" secondAttribute="trailingMargin" constant="-20" id="NPf-OX-g4p"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="V5Z-kQ-Mnb" secondAttribute="trailingMargin" id="Ypo-cC-O3S"/>
                                                 <constraint firstItem="V5Z-kQ-Mnb" firstAttribute="leading" secondItem="6NK-cH-80I" secondAttribute="leadingMargin" id="lsG-iD-Jcg"/>
+                                                <constraint firstItem="BKH-7w-YRE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6NK-cH-80I" secondAttribute="leadingMargin" id="uOA-Ql-Ks9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -211,8 +213,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fbq-4X-wGM" secondAttribute="trailingMargin" id="Fxz-sW-oCG"/>
                                                 <constraint firstItem="fbq-4X-wGM" firstAttribute="centerY" secondItem="vl6-Hc-rqD" secondAttribute="centerY" id="IPa-5f-ACA"/>
                                                 <constraint firstItem="fbq-4X-wGM" firstAttribute="leading" secondItem="vl6-Hc-rqD" secondAttribute="leadingMargin" id="Xbu-yu-m5K"/>
+                                                <constraint firstItem="rdZ-p3-iHx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vl6-Hc-rqD" secondAttribute="leadingMargin" id="kv7-Io-1nh"/>
                                                 <constraint firstItem="fbq-4X-wGM" firstAttribute="baseline" secondItem="rdZ-p3-iHx" secondAttribute="baseline" id="rd0-KD-Qxf"/>
                                                 <constraint firstItem="rdZ-p3-iHx" firstAttribute="trailing" secondItem="vl6-Hc-rqD" secondAttribute="trailingMargin" constant="-20" id="ucl-n9-hvc"/>
                                             </constraints>
@@ -241,6 +245,7 @@
                                             <constraints>
                                                 <constraint firstItem="VF6-uc-RwU" firstAttribute="leading" secondItem="Qo4-pL-YSJ" secondAttribute="leadingMargin" id="176-c1-9We"/>
                                                 <constraint firstItem="VF6-uc-RwU" firstAttribute="centerY" secondItem="Qo4-pL-YSJ" secondAttribute="centerY" id="N93-J3-g0o"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="VF6-uc-RwU" secondAttribute="trailingMargin" id="RIX-Wa-mUt"/>
                                                 <constraint firstItem="5m0-6V-O7S" firstAttribute="centerY" secondItem="VF6-uc-RwU" secondAttribute="centerY" id="VHy-WO-1wt"/>
                                                 <constraint firstAttribute="trailing" secondItem="5m0-6V-O7S" secondAttribute="trailing" constant="20" id="gzP-kQ-YbX"/>
                                             </constraints>
