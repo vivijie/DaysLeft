@@ -10,7 +10,9 @@ import UIKit
 import NotificationCenter
 import CoreData
 
-class TodayViewController: UIViewController, NCWidgetProviding {
+class TodayViewController: UITableViewController, NCWidgetProviding {
+  
+  var ChecklistItem = ["A", "B"]
   
   // from Extension to App
   @IBAction func BackTo(_ sender: UIButton) {
@@ -36,5 +38,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         completionHandler(NCUpdateResult.newData)
     }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 1 }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
+    
+    let day = ChecklistItem[indexPath.row]
+    let cell = tableView.dequeueReusableCell(withIdentifier: "BigDayOnToday", for: indexPath)
+    return cell
+  }
 }
+
