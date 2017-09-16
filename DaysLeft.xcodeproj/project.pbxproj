@@ -14,6 +14,10 @@
 		287F08021F6BAE39000FC644 /* DaysLeft Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 287F07F51F6BAE39000FC644 /* DaysLeft Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		28D0BD981F5FC6AA00CADE5E /* AddBigDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D0BD971F5FC6AA00CADE5E /* AddBigDayViewController.swift */; };
 		C55E98691F6CF5F70048935B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55E98681F6CF5F70048935B /* CoreDataStack.swift */; };
+		C56E88721F6D232400E5B2A6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55E98681F6CF5F70048935B /* CoreDataStack.swift */; };
+		C56E88731F6D233800E5B2A6 /* DaysLeft.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A551F52782700CFACF5 /* DaysLeft.xcdatamodeld */; };
+		C56E88741F6D234B00E5B2A6 /* BigDay+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A671F527E4500CFACF5 /* BigDay+CoreDataClass.swift */; };
+		C56E88751F6D234D00E5B2A6 /* BigDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A681F527E4500CFACF5 /* BigDay+CoreDataProperties.swift */; };
 		C58E653B1F6CD693004512DF /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E653A1F6CD693004512DF /* TodayTableViewCell.swift */; };
 		C59D6A4F1F52782700CFACF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A4E1F52782700CFACF5 /* AppDelegate.swift */; };
 		C59D6A541F52782700CFACF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C59D6A521F52782700CFACF5 /* Main.storyboard */; };
@@ -268,6 +272,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C56E88721F6D232400E5B2A6 /* CoreDataStack.swift in Sources */,
+				C56E88751F6D234D00E5B2A6 /* BigDay+CoreDataProperties.swift in Sources */,
+				C56E88731F6D233800E5B2A6 /* DaysLeft.xcdatamodeld in Sources */,
+				C56E88741F6D234B00E5B2A6 /* BigDay+CoreDataClass.swift in Sources */,
 				287F07FB1F6BAE39000FC644 /* TodayViewController.swift in Sources */,
 				C58E653B1F6CD693004512DF /* TodayTableViewCell.swift in Sources */,
 			);

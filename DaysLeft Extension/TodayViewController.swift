@@ -12,42 +12,40 @@ import CoreData
 
 class TodayViewController: UITableViewController, NCWidgetProviding {
   
-  var ChecklistItem = ["A", "B"]
+  lazy var coreDataStack = CoreDataStack(modelName: "DaysLeft")
+
+  lazy var bigdays = coreDataStack.mostRecentDay()
   
-  // from Extension to App
-  @IBAction func BackTo(_ sender: UIButton) {
-    extensionContext?.open(URL(string: "daysleft://more")!, completionHandler: nil)
+  override func viewDidLoad() {
+      super.viewDidLoad()
   }
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view from its nib.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
-        // Perform any setup necessary in order to update the view.
-        
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-        
-        completionHandler(NCUpdateResult.newData)
-    }
+  override func didReceiveMemoryWarning() {
+      super.didReceiveMemoryWarning()
+  }
+  
+  func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
+      completionHandler(NCUpdateResult.newData)
+  }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1 }
+    return  bigdays.count }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     
-    let day = ChecklistItem[indexPath.row]
+    let day = bigdays[indexPath.row]
     let cell = tableView.dequeueReusableCell(withIdentifier: "BigDayOnToday", for: indexPath)
+    
+    if let bigdayTableViewCell = cell as? TodayTableViewCell {
+      bigdayTableViewCell.bigday = day
+    }
+    
     return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    extensionContext?.open(URL(string: "daysleft://more")!, completionHandler: nil)
   }
 }
 

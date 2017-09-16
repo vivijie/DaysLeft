@@ -16,6 +16,7 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
     
   override func viewDidLoad() {
       super.viewDidLoad()
+    
       title = "All Days"
       tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BigDay")
   }

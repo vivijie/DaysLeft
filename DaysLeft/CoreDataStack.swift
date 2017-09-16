@@ -97,4 +97,43 @@ class CoreDataStack {
       print("Unresolved error \(error), \(error.userInfo)")
     }
   }
+  
+  func mostRecentDay() -> [BigDay] {
+    var bigdays: [BigDay] = []
+    
+    let fetchRequest:NSFetchRequest<BigDay> = BigDay.fetchRequest()
+    
+    do {
+      bigdays = try managedContext.fetch(fetchRequest)
+    } catch let error as NSError {
+      print("Could not fetch. \(error), \(error.userInfo)")
+    }
+    
+    return sortByDaysLeft(bigdays: bigdays)
+  }
+  
+  private func sortByDaysLeft(bigdays: [BigDay]) -> [BigDay] {
+    let dateNowNow = Date()
+    var bigDayDaysLeft = [BigDay]()
+    var bigDayDaysUntil = [BigDay]()
+    var sortBigDays = [BigDay]()
+    
+    // Check dyas left(+, >= 0) or days until(-, < 0)
+    for bigDay in bigdays {
+      if bigDay.diffDays(dateNow: dateNowNow) >= 0 {
+        bigDayDaysLeft.append(bigDay)
+      } else {
+        bigDayDaysUntil.append(bigDay)
+      }
+    }
+    
+    // Sort by diff days
+    let sortedBigDaysLeftByDiffDays = bigDayDaysLeft.sorted { $0.diffDays(dateNow: dateNowNow) < $1.diffDays(dateNow: dateNowNow) }
+//    let sortedBigDaysUntilByDiffDays = bigDayDaysUntil.sorted { $0.diffDays(dateNow: dateNowNow) > $1.diffDays(dateNow: dateNowNow) }
+//    sortBigDays = sortedBigDaysLeftByDiffDays + sortedBigDaysUntilByDiffDays
+    
+    sortBigDays = sortedBigDaysLeftByDiffDays
+    return sortBigDays
+  }
+  
 }
