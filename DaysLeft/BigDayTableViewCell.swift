@@ -11,48 +11,51 @@ import CoreData
 
 class BigDayTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var bigDate: UILabel!
-    @IBOutlet weak var leftDays: UILabel!
-    @IBOutlet weak var leftDayTag: UILabel!
+  @IBOutlet weak var title: UILabel!
+  @IBOutlet weak var bigDate: UILabel!
+  @IBOutlet weak var leftDays: UILabel!
+  @IBOutlet weak var leftDayTag: UILabel!
+  
+  var bigday: BigDay? {
+      didSet { updateUI() }
+  }
+  
+  let dateNow = Date()
+
+  let daysUntilColor = UIColor(red: 200/255, green: 200/255, blue: 200/255,
+                             alpha: 1)
+  
+  
+  private func updateUI() {
+      title?.text = bigday?.title
     
-    var bigday: BigDay? {
-        didSet { updateUI() }
-    }
+      guard let days = bigday?.diffDays(dateNow: dateNow) else {
+          return
+      }
     
-    let dateNow = Date()
+      if days >= 0 {
+          leftDays?.text = String(days)
+          leftDayTag?.text = "DAYS LEFT"
+      } else {
+          leftDays?.text = String(-(days))
+          leftDayTag?.text = "DAYS UNTIL"
+          leftDayTag?.textColor = daysUntilColor
+          leftDays?.textColor = daysUntilColor
+      }
     
+      if let theDate = bigday?.big_date {
+          bigDate?.text = formatDate(theDate: theDate)
+      } else {
+          bigDate?.text = ""
+      }
+  }
+  
+  private func formatDate(theDate: Date) -> String {
+      let formatter = DateFormatter()
+      formatter.dateStyle = .medium
+      formatter.timeStyle = .none
+      let formatResultString = formatter.string(from: theDate)
     
-    private func updateUI() {
-        title?.text = bigday?.title
-        
-        guard let days = bigday?.diffDays(dateNow: dateNow) else {
-            return
-        }
-        
-        if days >= 0 {
-            leftDays?.text = String(days)
-            leftDayTag?.text = "DAYS LEFT"
-        } else {
-            leftDays?.text = String(-(days))
-            leftDayTag?.text = "DAYS UNTIL"
-            leftDayTag?.textColor = UIColor.brown
-            leftDays?.textColor = UIColor.brown
-        }
-        
-        if let theDate = bigday?.big_date {
-            bigDate?.text = formatDate(theDate: theDate)
-        } else {
-            bigDate?.text = ""
-        }
-    }
-    
-    private func formatDate(theDate: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        let formatResultString = formatter.string(from: theDate)
-        
-        return formatResultString
-    }
+      return formatResultString
+  }
 }

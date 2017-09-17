@@ -28,6 +28,7 @@
 		C59D6A691F527E4500CFACF5 /* BigDay+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A671F527E4500CFACF5 /* BigDay+CoreDataClass.swift */; };
 		C59D6A6A1F527E4500CFACF5 /* BigDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A681F527E4500CFACF5 /* BigDay+CoreDataProperties.swift */; };
 		C59D6A6C1F52B15600CFACF5 /* BigDayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A6B1F52B15600CFACF5 /* BigDayTableViewCell.swift */; };
+		C5B0F0BA1F6E314100F124B1 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B0F0B91F6E314100F124B1 /* MenuTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		C59D6A671F527E4500CFACF5 /* BigDay+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigDay+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C59D6A681F527E4500CFACF5 /* BigDay+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigDay+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C59D6A6B1F52B15600CFACF5 /* BigDayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigDayTableViewCell.swift; sourceTree = "<group>"; };
+		C5B0F0B91F6E314100F124B1 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 		C59D6A4D1F52782600CFACF5 /* DaysLeft */ = {
 			isa = PBXGroup;
 			children = (
+				C5B0F0B91F6E314100F124B1 /* MenuTableViewController.swift */,
 				C58E653C1F6CDB9E004512DF /* DaysLeft.entitlements */,
 				C59D6A671F527E4500CFACF5 /* BigDay+CoreDataClass.swift */,
 				C59D6A681F527E4500CFACF5 /* BigDay+CoreDataProperties.swift */,
@@ -223,6 +226,12 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 0;
+							};
 						};
 					};
 				};
@@ -287,6 +296,7 @@
 			files = (
 				28D0BD981F5FC6AA00CADE5E /* AddBigDayViewController.swift in Sources */,
 				C59D6A661F52787F00CFACF5 /* BigDaysTableViewController.swift in Sources */,
+				C5B0F0BA1F6E314100F124B1 /* MenuTableViewController.swift in Sources */,
 				2828C33F1F61102900BC9DC9 /* RepeatPickerViewController.swift in Sources */,
 				C55E98691F6CF5F70048935B /* CoreDataStack.swift in Sources */,
 				C59D6A6C1F52B15600CFACF5 /* BigDayTableViewCell.swift in Sources */,

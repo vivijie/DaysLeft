@@ -19,6 +19,12 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
     
       title = "All Days"
       tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BigDay")
+    
+    // Remove empty cells in UITableView
+    tableView.tableFooterView = UIView(frame: .zero)
+    // Set tableview background color
+    tableView.backgroundColor = UIColor(displayP3Red: 250/255, green: 250/255, blue: 250/255, alpha: 1)
+    tableView.reloadData()
   }
   
   override func viewWillAppear(_ animated: Bool) {
