@@ -120,9 +120,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Big Day" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PB7-BV-e1D">
-                                                    <rect key="frame" x="8" y="6" width="359" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Big Day" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PB7-BV-e1D">
+                                                    <rect key="frame" x="15" y="6" width="352" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -132,6 +131,12 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PB7-BV-e1D" firstAttribute="trailing" secondItem="9eg-Hc-pfM" secondAttribute="trailingMargin" id="NeQ-Qt-gdk"/>
+                                                <constraint firstItem="PB7-BV-e1D" firstAttribute="leading" secondItem="9eg-Hc-pfM" secondAttribute="leading" constant="15" id="P3O-cG-hd4"/>
+                                                <constraint firstItem="PB7-BV-e1D" firstAttribute="centerY" secondItem="9eg-Hc-pfM" secondAttribute="centerY" id="aqw-f8-mtE"/>
+                                                <constraint firstItem="PB7-BV-e1D" firstAttribute="top" secondItem="9eg-Hc-pfM" secondAttribute="topMargin" constant="-2" id="iHj-hz-wBn"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
