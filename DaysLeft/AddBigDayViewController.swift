@@ -32,7 +32,10 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
             repeatTypeName.text = item.repeat_type
             dueDate = item.big_date!
             doneBarButton.isEnabled = true
-        }
+        } else {
+          repeatTypeName.text = "None"
+          dueDate = Date()
+      }
     }
     
     @IBAction func cancel() {
@@ -180,7 +183,6 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
     func updateBigDateLabel() {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
-        formatter.timeStyle = .short
         bigDateLabel.text = formatter.string(from: dueDate)
     }
     

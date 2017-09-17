@@ -17,7 +17,7 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
   override func viewDidLoad() {
       super.viewDidLoad()
     
-      title = "All Days"
+      title = "Your Days"
       tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BigDay")
     
     // Remove empty cells in UITableView
@@ -105,8 +105,22 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
 
   // MARK: - Table view data source
 
-  override func numberOfSections(in tableView: UITableView) -> Int {
-      return 1
+  override func numberOfSections(in tableView: UITableView) -> Int   {
+    if bigdays.count > 0 {
+      self.tableView.backgroundView = nil
+    } else {
+      
+      let noDataLabel: UILabel = UILabel(frame: CGRect(x: 0,
+                                                       y: 0,
+                                                       width: tableView.bounds.size.width,
+                                                       height: tableView.bounds.size.height))
+      noDataLabel.text = "tap + to add your days"
+      noDataLabel.textColor = UIColor(red: 220/255, green: 220/255, blue: 220/255, alpha: 1)
+      noDataLabel.textAlignment = NSTextAlignment.center
+      self.tableView.backgroundView = noDataLabel
+      
+    }
+    return 1
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
