@@ -27,12 +27,13 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
         super.viewDidLoad()
         
         if let item = itemToEdit {
-            title = "Edit Day"
+            title = "EDIT DAY"
             textField.text = item.title
             repeatTypeName.text = item.repeat_type
             dueDate = item.big_date!
             doneBarButton.isEnabled = true
         } else {
+          textField.becomeFirstResponder()
           repeatTypeName.text = "None"
           dueDate = Date()
       }
@@ -62,7 +63,8 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
     @IBOutlet weak var textField: UITextField!
     
     weak var delegate: AddBigDayViewControllerDelegate?
-    
+  
+  // To disable row select
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if indexPath.section == 1 || indexPath.section == 2 {
             return indexPath

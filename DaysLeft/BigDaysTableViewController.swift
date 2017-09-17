@@ -17,7 +17,7 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
   override func viewDidLoad() {
       super.viewDidLoad()
     
-      title = "Your Days"
+      title = "YOUR DAYS"
       tableView.register(UITableViewCell.self, forCellReuseIdentifier: "BigDay")
     
     // Remove empty cells in UITableView

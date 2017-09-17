@@ -22,8 +22,8 @@ class BigDayTableViewCell: UITableViewCell {
   
   let dateNow = Date()
 
-  let daysUntilColor = UIColor(red: 200/255, green: 200/255, blue: 200/255,
-                             alpha: 1)
+  let daysUntilColor = UIColor(red: 200/255, green: 200/255, blue: 200/255, alpha: 1)
+  let daysLeftColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1)
   
   
   private func updateUI() {
@@ -34,8 +34,10 @@ class BigDayTableViewCell: UITableViewCell {
       }
     
       if days >= 0 {
-          leftDays?.text = String(days)
-          leftDayTag?.text = "DAYS LEFT"
+        leftDays?.text = String(days)
+        leftDayTag?.text = "DAYS LEFT"
+        leftDayTag?.textColor = daysLeftColor
+        leftDays?.textColor = daysLeftColor
       } else {
           leftDays?.text = String(-(days))
           leftDayTag?.text = "DAYS UNTIL"

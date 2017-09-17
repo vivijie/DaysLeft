@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import MessageUI
 
-class MenuTableViewController: UITableViewController {
+class MenuTableViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
   @IBAction func done(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
@@ -40,30 +40,40 @@ class MenuTableViewController: UITableViewController {
   }
   
   func launchEmail() {
+    
+    
     let iOSVersion = UIDevice.current.systemVersion
     let model = UIDevice.current.model
-
     
     let recipients = ["brincells@gmail.com"]
     let subject = "Days v\(version) Support"
-    let supportText = "Please write your feedback here.\n\n\n\n"
+    let supportText = "Please write your feedback here.\n\n\n\n\n\n"
     let supportBody = supportText + "iOS Version: \(iOSVersion)\nDevice: \(model)"
     
-    let mailComposer: MFMailComposeViewController = MFMailComposeViewController()
-    mailComposer.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
-    mailComposer.setToRecipients(recipients)
-    mailComposer.setSubject(subject)
-    mailComposer.setMessageBody(supportBody, isHTML: false)
-    
+    let mailComposer = MFMailComposeViewController()
+
     if MFMailComposeViewController.canSendMail() {
+      mailComposer.mailComposeDelegate = self
+      mailComposer.setToRecipients(recipients)
+      mailComposer.setSubject(subject)
+      mailComposer.setMessageBody(supportBody, isHTML: false)
       self.present(mailComposer, animated: true, completion: nil)
     } else {
+      print("Mail services are not available")
       return
     }
   }
   
+  func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    dismiss(animated: true, completion: nil)
+  }
   
-  func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
-    self.dismiss(animated: true, completion: nil)
+  // To disable row select
+  override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+    if indexPath.section == 0 && indexPath.row == 1 {
+      return nil
+    } else {
+      return indexPath
+    }
   }
 }

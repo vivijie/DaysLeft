@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Your Days-->
+        <!--YOUR DAYS-->
         <scene sceneID="ERU-m8-jkf">
             <objects>
                 <tableViewController id="Mn5-Sr-p5H" customClass="BigDaysTableViewController" customModule="DaysLeft" customModuleProvider="target" sceneMemberID="viewController">
@@ -84,7 +84,7 @@
                             <outlet property="delegate" destination="Mn5-Sr-p5H" id="i7T-1q-6LQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Days" id="kkh-3T-MDJ">
+                    <navigationItem key="navigationItem" title="YOUR DAYS" id="kkh-3T-MDJ">
                         <barButtonItem key="leftBarButtonItem" title="Setting" image="menuBtn_Nav" id="zZw-aJ-hSf">
                             <connections>
                                 <action selector="menuButton:" destination="Mn5-Sr-p5H" id="SjV-2R-0ze"/>
@@ -102,7 +102,7 @@
             </objects>
             <point key="canvasLocation" x="525.60000000000002" y="151.57421289355324"/>
         </scene>
-        <!--Add Day-->
+        <!--ADD DAY-->
         <scene sceneID="abc-jZ-Stw">
             <objects>
                 <tableViewController id="fLx-YO-qys" customClass="AddBigDayViewController" customModule="DaysLeft" customModuleProvider="target" sceneMemberID="viewController">
@@ -120,7 +120,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Day" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PB7-BV-e1D">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title of the Day" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PB7-BV-e1D">
                                                     <rect key="frame" x="15" y="8" width="352" height="28"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -252,7 +252,7 @@
                             <outlet property="delegate" destination="fLx-YO-qys" id="Ofh-qp-QUE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Day" id="Bgr-Ly-XBg">
+                    <navigationItem key="navigationItem" title="ADD DAY" id="Bgr-Ly-XBg">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jUY-WG-rKd">
                             <connections>
                                 <action selector="cancel" destination="fLx-YO-qys" id="Kih-v4-Vhg"/>
@@ -395,8 +395,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Mail Support" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZQw-Pe-TFz">
-                                                    <rect key="frame" x="16" y="12" width="92.5" height="19.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Sent Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZQw-Pe-TFz">
+                                                    <rect key="frame" x="16" y="12" width="108.5" height="19.5"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

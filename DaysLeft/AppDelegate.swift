@@ -16,17 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   lazy var coreDataStack = CoreDataStack(modelName: "DaysLeft")
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
-    customizeAppearance()
-
     guard let navController = window?.rootViewController as? UINavigationController,
       let viewController = navController.topViewController as? BigDaysTableViewController else {
         return true
     }
-    
     viewController.managedContext = coreDataStack.managedContext
+    customizeAppearance()
     return true
   }
+  
 
   func applicationDidEnterBackground(_ application: UIApplication) {
     coreDataStack.saveContext()

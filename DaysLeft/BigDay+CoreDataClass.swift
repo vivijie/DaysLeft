@@ -2,7 +2,7 @@
 //  BigDay+CoreDataClass.swift
 //  DaysLeft
 //
-//  Created by viviJIE on 8/27/17.
+//  Created by viviJIE on 9/17/17.
 //  Copyright © 2017 tdones. All rights reserved.
 //
 //
