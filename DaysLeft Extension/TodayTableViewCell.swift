@@ -25,13 +25,12 @@ class TodayTableViewCell: UITableViewCell {
 
     guard let days = bigday?.diffDays(dateNow: dateNow) else {
       return
-    }
-
+    }    
+    
     if days >= 0 {
-      leftDays?.text = String(days)
+      leftDays?.text = String(days) + " Days"
     } else {
-      leftDays?.text = String(-(days))
-      leftDays?.textColor = UIColor.brown
+      leftDays?.text = String(-(days)) + " Days"
     }
   }
 }

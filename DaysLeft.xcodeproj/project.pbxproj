@@ -17,8 +17,8 @@
 		C52218901F6E713A006DF152 /* BigDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522188E1F6E713A006DF152 /* BigDay+CoreDataProperties.swift */; };
 		C52218911F6E7176006DF152 /* BigDay+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522188D1F6E713A006DF152 /* BigDay+CoreDataClass.swift */; };
 		C52218921F6E7179006DF152 /* BigDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522188E1F6E713A006DF152 /* BigDay+CoreDataProperties.swift */; };
-		C52218951F6E728C006DF152 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52218941F6E7286006DF152 /* CoreDataStack.swift */; };
-		C55E98691F6CF5F70048935B /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55E98681F6CF5F70048935B /* CoreDataStack.swift */; };
+		C52218981F6E8B66006DF152 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52218971F6E8B60006DF152 /* CoreDataStack.swift */; };
+		C52218991F6E8B66006DF152 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52218971F6E8B60006DF152 /* CoreDataStack.swift */; };
 		C56E88731F6D233800E5B2A6 /* DaysLeft.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A551F52782700CFACF5 /* DaysLeft.xcdatamodeld */; };
 		C58E653B1F6CD693004512DF /* TodayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E653A1F6CD693004512DF /* TodayTableViewCell.swift */; };
 		C59D6A4F1F52782700CFACF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C59D6A4E1F52782700CFACF5 /* AppDelegate.swift */; };
@@ -65,9 +65,7 @@
 		28D0BD971F5FC6AA00CADE5E /* AddBigDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBigDayViewController.swift; sourceTree = "<group>"; };
 		C522188D1F6E713A006DF152 /* BigDay+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigDay+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C522188E1F6E713A006DF152 /* BigDay+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigDay+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C52218931F6E720B006DF152 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = SOURCE_ROOT; };
-		C52218941F6E7286006DF152 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = SOURCE_ROOT; };
-		C55E98681F6CF5F70048935B /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		C52218971F6E8B60006DF152 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		C58E653A1F6CD693004512DF /* TodayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayTableViewCell.swift; sourceTree = "<group>"; };
 		C58E653C1F6CDB9E004512DF /* DaysLeft.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DaysLeft.entitlements; sourceTree = "<group>"; };
 		C58E653D1F6CDC0C004512DF /* DaysLeft Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "DaysLeft Extension.entitlements"; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 		C59D6A421F52782600CFACF5 = {
 			isa = PBXGroup;
 			children = (
-				C55E98681F6CF5F70048935B /* CoreDataStack.swift */,
 				C59D6A4D1F52782600CFACF5 /* DaysLeft */,
 				287F07F91F6BAE39000FC644 /* DaysLeft Extension */,
 				287F07F61F6BAE39000FC644 /* Frameworks */,
@@ -148,9 +145,9 @@
 				C5B0F0B91F6E314100F124B1 /* MenuTableViewController.swift */,
 				C58E653C1F6CDB9E004512DF /* DaysLeft.entitlements */,
 				C59D6A551F52782700CFACF5 /* DaysLeft.xcdatamodeld */,
-				C52218941F6E7286006DF152 /* CoreDataStack.swift */,
 				C522188D1F6E713A006DF152 /* BigDay+CoreDataClass.swift */,
 				C522188E1F6E713A006DF152 /* BigDay+CoreDataProperties.swift */,
+				C52218971F6E8B60006DF152 /* CoreDataStack.swift */,
 				C59D6A651F52787F00CFACF5 /* BigDaysTableViewController.swift */,
 				C59D6A6B1F52B15600CFACF5 /* BigDayTableViewCell.swift */,
 				C59D6A521F52782700CFACF5 /* Main.storyboard */,
@@ -159,7 +156,6 @@
 				C59D6A581F52782700CFACF5 /* Assets.xcassets */,
 				C59D6A5D1F52782700CFACF5 /* Info.plist */,
 				C59D6A4E1F52782700CFACF5 /* AppDelegate.swift */,
-				C52218931F6E720B006DF152 /* CoreDataStack.swift */,
 				C59D6A5A1F52782700CFACF5 /* LaunchScreen.storyboard */,
 			);
 			path = DaysLeft;
@@ -288,7 +284,7 @@
 				C56E88731F6D233800E5B2A6 /* DaysLeft.xcdatamodeld in Sources */,
 				C52218911F6E7176006DF152 /* BigDay+CoreDataClass.swift in Sources */,
 				287F07FB1F6BAE39000FC644 /* TodayViewController.swift in Sources */,
-				C52218951F6E728C006DF152 /* CoreDataStack.swift in Sources */,
+				C52218991F6E8B66006DF152 /* CoreDataStack.swift in Sources */,
 				C58E653B1F6CD693004512DF /* TodayTableViewCell.swift in Sources */,
 				C52218921F6E7179006DF152 /* BigDay+CoreDataProperties.swift in Sources */,
 			);
@@ -303,7 +299,7 @@
 				C59D6A661F52787F00CFACF5 /* BigDaysTableViewController.swift in Sources */,
 				C5B0F0BA1F6E314100F124B1 /* MenuTableViewController.swift in Sources */,
 				2828C33F1F61102900BC9DC9 /* RepeatPickerViewController.swift in Sources */,
-				C55E98691F6CF5F70048935B /* CoreDataStack.swift in Sources */,
+				C52218981F6E8B66006DF152 /* CoreDataStack.swift in Sources */,
 				C59D6A6C1F52B15600CFACF5 /* BigDayTableViewCell.swift in Sources */,
 				C59D6A571F52782700CFACF5 /* DaysLeft.xcdatamodeld in Sources */,
 				C59D6A4F1F52782700CFACF5 /* AppDelegate.swift in Sources */,

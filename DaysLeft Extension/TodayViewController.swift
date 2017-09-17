@@ -16,8 +16,14 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
 
   lazy var bigdays = coreDataStack.mostRecentDay()
   
+  let daybgColorP3 = UIColor(displayP3Red: 40/255, green: 122/255, blue: 212/255, alpha: 1)
+  
+  
+  @IBOutlet weak var textBackground: UIView!
+  
   override func viewDidLoad() {
-      super.viewDidLoad()
+    super.viewDidLoad()
+    self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
   }
   
   override func didReceiveMemoryWarning() {
@@ -40,12 +46,28 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
     if let bigdayTableViewCell = cell as? TodayTableViewCell {
       bigdayTableViewCell.bigday = day
     }
-    
     return cell
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     extensionContext?.open(URL(string: "daysleft://more")!, completionHandler: nil)
   }
+  
+  // Show less/more
+  func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+
+    if (activeDisplayMode == NCWidgetDisplayMode.compact) {
+      self.preferredContentSize = maxSize
+    } else {
+      let maxHeight = bigdays.count * 38
+      self.preferredContentSize = CGSize(width: maxSize.width, height: CGFloat(maxHeight))
+    }
+  }
+//
+//  private func updateDayTextBackgroundColor() {
+//    textBackground.backgroundColor = daybgColorP3
+//    textBackground.layer.cornerRadius = 5.0
+//  }
+//
 }
 
