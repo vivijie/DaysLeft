@@ -16,7 +16,7 @@ class TodayViewController: UITableViewController, NCWidgetProviding {
 
   lazy var bigdays = coreDataStack.mostRecentDay()
   
-  let daybgColorP3 = UIColor(displayP3Red: 40/255, green: 122/255, blue: 212/255, alpha: 1)
+
   
   
   @IBOutlet weak var textBackground: UIView!

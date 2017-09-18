@@ -24,49 +24,31 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="40.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNF-Lf-rpY">
-                                            <rect key="frame" x="329.5" y="10.5" width="25.5" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Till New Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cas-hA-SWe">
+                                            <rect key="frame" x="20" y="10" width="200" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.039215686274509803" green="0.039215686274509803" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TDc-uv-GRJ">
+                                            <rect key="frame" x="287" y="5" width="80" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="58 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jh-fq-SeY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="25.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="58 " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Jh-fq-SeY">
+                                                    <rect key="frame" x="0.0" y="5" width="72" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.15686274509803921" green="0.47843137254901957" blue="0.83137254901960778" alpha="1" colorSpace="calibratedRGB"/>
-                                        </stackView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Till New Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cas-hA-SWe">
-                                            <rect key="frame" x="20" y="10" width="200" height="20.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="Mfi-AG-0bU">
-                                                    <variation key="widthClass=compact" constant="200"/>
-                                                    <variation key="widthClass=regular" constant="200"/>
-                                                </constraint>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TDc-uv-GRJ">
-                                            <rect key="frame" x="317" y="5" width="50" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" red="0.15686274510000001" green="0.47843137250000001" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="QNF-Lf-rpY" firstAttribute="top" secondItem="cas-hA-SWe" secondAttribute="top" id="2qE-R6-YBK"/>
-                                        <constraint firstAttribute="trailing" secondItem="QNF-Lf-rpY" secondAttribute="trailing" constant="20" id="Ow3-vK-YWz"/>
-                                        <constraint firstAttribute="trailing" secondItem="6Jh-fq-SeY" secondAttribute="trailing" constant="20" id="RlY-Id-yGO">
-                                            <variation key="widthClass=compact" constant="15"/>
-                                            <variation key="widthClass=regular" constant="20"/>
-                                        </constraint>
-                                        <constraint firstItem="QNF-Lf-rpY" firstAttribute="centerY" secondItem="RrG-ca-oQ5" secondAttribute="centerY" id="rc2-M5-bAo"/>
-                                        <constraint firstItem="cas-hA-SWe" firstAttribute="leading" secondItem="RrG-ca-oQ5" secondAttribute="leading" constant="20" id="ulj-Jp-2vL"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cas-hA-SWe" secondAttribute="trailing" constant="20" symbolic="YES" id="wSz-j8-IiJ"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="bgColorView" destination="TDc-uv-GRJ" id="yT7-X6-nc2"/>
                                     <outlet property="leftDays" destination="6Jh-fq-SeY" id="Xmi-ET-pdK"/>
                                     <outlet property="title" destination="cas-hA-SWe" id="NYg-VI-owy"/>
                                 </connections>
@@ -80,7 +62,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tzo-8v-fiz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="710" y="26"/>
+            <point key="canvasLocation" x="709.60000000000002" y="25.637181409295355"/>
         </scene>
     </scenes>
 </document>

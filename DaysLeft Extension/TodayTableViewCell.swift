@@ -13,11 +13,14 @@ class TodayTableViewCell: UITableViewCell {
 
   @IBOutlet weak var title: UILabel!
   @IBOutlet weak var leftDays: UILabel!
+  @IBOutlet weak var bgColorView: UIView!
   
   var bigday: BigDay? {
     didSet { updateUI() }
   }
-
+  
+  let daybgColorP3 = UIColor(displayP3Red: 77.0/255, green: 170.0/255, blue: 234.0/255, alpha: 1)
+  
   let dateNow = Date()
 
   private func updateUI() {
@@ -32,5 +35,8 @@ class TodayTableViewCell: UITableViewCell {
     } else {
       leftDays?.text = String(-(days)) + " Days"
     }
+    
+    bgColorView.backgroundColor = daybgColorP3
+    bgColorView.layer.cornerRadius = 8.0
   }
 }
