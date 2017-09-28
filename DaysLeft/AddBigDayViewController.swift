@@ -49,6 +49,7 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
             item.big_date = Date()
             item.repeat_type = repeatTypeName.text
             item.big_date = dueDate
+            item.day_description = "On"
             delegate?.addBigDayViewController(controller: self, didFinishEditingItem: item)
         } else {
             let titleToAdd = textField.text!

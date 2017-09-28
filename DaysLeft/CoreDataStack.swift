@@ -11,13 +11,12 @@ import CoreData
 
 class CoreDataStack {
   
-  var store: NSPersistentStore?
-  
   private let modelName: String
   
   init(modelName: String) {
     self.modelName = modelName
   }
+  
   
   lazy var managedContext:NSManagedObjectContext = {
     var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
@@ -26,14 +25,17 @@ class CoreDataStack {
     return managedObjectContext
   }()
   
+  
   lazy var coordinator: NSPersistentStoreCoordinator = {
-    
     let coordinator = NSPersistentStoreCoordinator(managedObjectModel:self.managedObjectModel)
-    let documentsURL = self.applicationDocumentsDirectory
-    let storeURL = documentsURL.appendingPathComponent(self.modelName)
+    
+    let documentsDirectory = self.applicationDocumentsDirectory
+
+    let storeURL = documentsDirectory.appendingPathComponent("CoreData.sqlite")
+    
+    let storeOptions = [NSPersistentStoreUbiquitousContentNameKey]
     
     do {
-      
       let options =
         [NSMigratePersistentStoresAutomaticallyOption: true]
       
@@ -42,25 +44,19 @@ class CoreDataStack {
                                          configurationName: nil,
                                          at: storeURL,
                                                  options: options
-      )
-    } catch {
-      print("Error adding persistent store: \(error)")
+                                        )
+      } catch {
+        print("Error adding persistent store: \(error)")
     }
     
     return coordinator
   }()
   
-  var managedObjectModel: NSManagedObjectModel = {
-   
-    let bundle = Bundle.main
-    let modelURL = bundle.url(forResource: "DaysLeft", withExtension: "momd")!
-    
-    return NSManagedObjectModel(contentsOf: modelURL)!
-  }()
   
   lazy var applicationDocumentsDirectory: NSURL = {
     let fileManager = FileManager.default
-    
+
+
     if let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.com.tdones.DaysLeft") {
       return url as NSURL
     } else {
@@ -69,6 +65,41 @@ class CoreDataStack {
     }
   }()
   
+  
+  
+  var managedObjectModel: NSManagedObjectModel = {
+   
+    let bundle = Bundle.main
+    let modelURL = bundle.url(forResource: "DaysLeft", withExtension: "momd")!
+    
+    
+    return NSManagedObjectModel(contentsOf: modelURL)!
+  }()
+
+    
+    class func fetchEntities(className: NSString, managedObjectContext: NSManagedObjectContext, predicate: NSPredicate?) -> [BigDay] {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+        let entetyDescription = NSEntityDescription.entity(forEntityName: className as String, in: managedObjectContext)
+        fetchRequest.entity = entetyDescription
+        
+        if predicate != nil {
+            fetchRequest.predicate = predicate!
+        }
+        
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        var items = [BigDay]()
+        
+        do {
+            items = try managedObjectContext.fetch(fetchRequest) as! [BigDay]
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        return items
+    }
+    
   
   func saveContext() {
     guard managedContext.hasChanges else {
@@ -113,9 +144,6 @@ class CoreDataStack {
     
     // Sort by diff days
     let sortedBigDaysLeftByDiffDays = bigDayDaysLeft.sorted { $0.diffDays(dateNow: dateNowNow) < $1.diffDays(dateNow: dateNowNow) }
-//    let sortedBigDaysUntilByDiffDays = bigDayDaysUntil.sorted { $0.diffDays(dateNow: dateNowNow) > $1.diffDays(dateNow: dateNowNow) }
-//    sortBigDays = sortedBigDaysLeftByDiffDays + sortedBigDaysUntilByDiffDays
-    
     sortBigDays = sortedBigDaysLeftByDiffDays
     return sortBigDays
   }

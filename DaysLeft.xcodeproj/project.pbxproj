@@ -12,6 +12,7 @@
 		287F07FB1F6BAE39000FC644 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F07FA1F6BAE39000FC644 /* TodayViewController.swift */; };
 		287F07FE1F6BAE39000FC644 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287F07FC1F6BAE39000FC644 /* MainInterface.storyboard */; };
 		287F08021F6BAE39000FC644 /* DaysLeft Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 287F07F51F6BAE39000FC644 /* DaysLeft Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		28C17A231F7BA90400CBEC15 /* BigDayForSycn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28C17A221F7BA90400CBEC15 /* BigDayForSycn.swift */; };
 		28D0BD981F5FC6AA00CADE5E /* AddBigDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D0BD971F5FC6AA00CADE5E /* AddBigDayViewController.swift */; };
 		C522188F1F6E713A006DF152 /* BigDay+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522188D1F6E713A006DF152 /* BigDay+CoreDataClass.swift */; };
 		C52218901F6E713A006DF152 /* BigDay+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522188E1F6E713A006DF152 /* BigDay+CoreDataProperties.swift */; };
@@ -62,6 +63,7 @@
 		287F07FA1F6BAE39000FC644 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		287F07FD1F6BAE39000FC644 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		287F07FF1F6BAE39000FC644 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		28C17A221F7BA90400CBEC15 /* BigDayForSycn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigDayForSycn.swift; sourceTree = "<group>"; };
 		28D0BD971F5FC6AA00CADE5E /* AddBigDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBigDayViewController.swift; sourceTree = "<group>"; };
 		C522188D1F6E713A006DF152 /* BigDay+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigDay+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C522188E1F6E713A006DF152 /* BigDay+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BigDay+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -142,11 +144,12 @@
 		C59D6A4D1F52782600CFACF5 /* DaysLeft */ = {
 			isa = PBXGroup;
 			children = (
-				C5B0F0B91F6E314100F124B1 /* MenuTableViewController.swift */,
 				C58E653C1F6CDB9E004512DF /* DaysLeft.entitlements */,
 				C59D6A551F52782700CFACF5 /* DaysLeft.xcdatamodeld */,
+				C5B0F0B91F6E314100F124B1 /* MenuTableViewController.swift */,
 				C522188D1F6E713A006DF152 /* BigDay+CoreDataClass.swift */,
 				C522188E1F6E713A006DF152 /* BigDay+CoreDataProperties.swift */,
+				28C17A221F7BA90400CBEC15 /* BigDayForSycn.swift */,
 				C52218971F6E8B60006DF152 /* CoreDataStack.swift */,
 				C59D6A651F52787F00CFACF5 /* BigDaysTableViewController.swift */,
 				C59D6A6B1F52B15600CFACF5 /* BigDayTableViewCell.swift */,
@@ -230,7 +233,7 @@
 								enabled = 1;
 							};
 							com.apple.iCloud = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -304,6 +307,7 @@
 				C59D6A571F52782700CFACF5 /* DaysLeft.xcdatamodeld in Sources */,
 				C59D6A4F1F52782700CFACF5 /* AppDelegate.swift in Sources */,
 				C522188F1F6E713A006DF152 /* BigDay+CoreDataClass.swift in Sources */,
+				28C17A231F7BA90400CBEC15 /* BigDayForSycn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

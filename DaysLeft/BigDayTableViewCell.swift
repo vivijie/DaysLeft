@@ -11,7 +11,9 @@ import CoreData
 
 class BigDayTableViewCell: UITableViewCell {
 
-  @IBOutlet weak var title: UILabel!
+    @IBAction func remindButton(_ sender: Any) {
+    }
+    @IBOutlet weak var title: UILabel!
   @IBOutlet weak var bigDate: UILabel!
   @IBOutlet weak var leftDays: UILabel!
   @IBOutlet weak var leftDayTag: UILabel!
