@@ -13,7 +13,11 @@ import CoreData
 class BigDaysTableViewController: UITableViewController, AddBigDayViewControllerDelegate {
   
     var managedContext: NSManagedObjectContext!
-    var bigdays: [BigDay] = []
+    var bigdays: [BigDay] = [] {
+        didSet {
+            print("bigdays didSet: \(bigdays.count)")
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +36,19 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
 
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-
-      let fetchRequest:NSFetchRequest<BigDay> = BigDay.fetchRequest()
-
-      do {
-          bigdays = try managedContext.fetch(fetchRequest)
-          sortByDaysLeft()
-      } catch let error as NSError {
-          print("Could not fetch. \(error), \(error.userInfo)")
-      }
-
+        fetchBigDays()
     }
-
+    
+    func fetchBigDays() {
+        let fetchRequest:NSFetchRequest<BigDay> = BigDay.fetchRequest()
+        
+        do {
+            bigdays = try managedContext.fetch(fetchRequest)
+            sortByDaysLeft()
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
     
     func addBigDayViewControllerDidCancel(controller: AddBigDayViewController) {
       dismiss(animated: true, completion: nil)
@@ -57,17 +62,17 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
       day.title = title
       day.big_date = date
       day.repeat_type = repeat_type
-
-      do {
-          try managedContext.save()
-          bigdays.append(day)
-          saveBigDayItemsToCloud()
-      } catch let error as NSError {
-          print("Could not save. \(error), \(error.userInfo)")
-      }
-
-      sortByDaysLeft()
         
+      do {
+        bigdays.append(day)
+        try managedContext.save()
+        saveBigDayItemsToCloud()
+      } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+      }
+    
+      sortByDaysLeft()
+      saveBigDayItemsToCloud()
       self.tableView.reloadData()
       dismiss(animated: true, completion: nil)
     }
@@ -97,10 +102,8 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
 
       let dayToDelete = bigdays[indexPath.row]
         
-        print("bigdays count before remoeve: \(bigdays.count)")
       managedContext.delete(dayToDelete)
       bigdays.remove(at: indexPath.row)
-        print("bigdays count after remoeve: \(bigdays.count)")
       do {
           try managedContext.save()
           tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -148,7 +151,7 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
       return cell
     }
 
-    // Segue
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if segue.identifier == "AddBigDay" {
           let navigationController = segue.destination as! UINavigationController
@@ -166,7 +169,6 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
       }
     }
 
-    // Sorting Rows
     func sortByDaysLeft() {
       let dateNowNow = Date()
       var bigDayDaysLeft = [BigDay]()
@@ -191,40 +193,41 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
       self.tableView.reloadData()
     }
     
-    // *** Save item to iCloud ***
+    // MARK: - Save item to iCloud
+    
     func saveBigDayItemsToCloud() {
         print("Saving big days to iCloud")
 
-        var daysBeforeDecode = [BigDayForSync]()
-
-        if bigdays.count > 0 {
-            for day in bigdays {
-                let dayBeforeDecode = BigDayForSync()
-                dayBeforeDecode.title = day.title!
-                dayBeforeDecode.dueDate = day.big_date! as NSDate
-//                dayBeforeDecode.day_description = day.day_description!
-                dayBeforeDecode.day_description = "On"
-                dayBeforeDecode.repeatKind = day.repeat_type!
-                daysBeforeDecode.append(dayBeforeDecode)
+        var daysBeforeDecode = [BigDayForSync]() {
+            didSet {
+                print("daysBeforeDecode count: \(daysBeforeDecode.count)")
             }
-
-            let data = NSMutableData()
-
-            let archiver = NSKeyedArchiver(forWritingWith: data)
-            archiver.encode(daysBeforeDecode, forKey: "BigDayData")
-            archiver.finishEncoding()
-
-            print("days sent to iCloud: \(daysBeforeDecode)")
-            
-            // Save to iCloud
-            let store = NSUbiquitousKeyValueStore.default
-            store.set(data, forKey: "BigDayData")
-            store.synchronize()
         }
+
+        fetchBigDays()
+        
+        for day in bigdays {
+            let dayBeforeDecode = BigDayForSync()
+            dayBeforeDecode.title = day.title!
+            dayBeforeDecode.dueDate = day.big_date! as NSDate
+            dayBeforeDecode.day_description = "On"
+            dayBeforeDecode.repeatKind = day.repeat_type!
+            daysBeforeDecode.append(dayBeforeDecode)
+        }
+
+        let data = NSMutableData()
+
+        let archiver = NSKeyedArchiver(forWritingWith: data)
+        archiver.encode(daysBeforeDecode, forKey: "BigDayData")
+        archiver.finishEncoding()
+        
+        // Save to iCloud
+        let store = NSUbiquitousKeyValueStore.default
+        store.set(data, forKey: "BigDayData")
+        store.synchronize()
+        
    }
     
-    
-    // iCloud Sycn
     private func getSycnNotification() {
         let store = NSUbiquitousKeyValueStore.default
         NotificationCenter.default.addObserver(self, selector: #selector(updateKeyValuePairs), name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: store)
@@ -232,6 +235,7 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
     }
     
     @objc func updateKeyValuePairs(notification: NSNotification) {
+        print("updateKeyValuePairs")
         let userInfo = notification.userInfo
         let changeReason =  userInfo?["NSUbiquitousKeyValueStoreChangeReasonKey"]
         var reason = -1
@@ -247,46 +251,56 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
             let changeKeys =  userInfo?["NSUbiquitousKeyValueStoreChangedKeysKey"] as! NSArray
             let store = NSUbiquitousKeyValueStore.default
             
+            var middleDataBetweenCloudAndLocal = [BigDay]() {
+                didSet {
+                    print("middleDataBetweenCloudAndLocal count: \(middleDataBetweenCloudAndLocal.count)")
+                }
+            }
+            
             for key in changeKeys {
                 if (key as AnyObject).isEqual("BigDayData") {
-                    // Update Data Source
                     let data = store.object(forKey: "BigDayData") as! NSData
                     
-                    var daysAfterDecode = [BigDayForSync]()
-                    var bigDaysFromCloud = [BigDay]()
-                    
+                    var dataAfterDecode = [BigDayForSync]()
+
                     let unarchiver = NSKeyedUnarchiver(forReadingWith: data as Data)
-                    daysAfterDecode = unarchiver.decodeObject(forKey: "BigDayData") as! [BigDayForSync]
+                    dataAfterDecode = unarchiver.decodeObject(forKey: "BigDayData") as! [BigDayForSync]
                     unarchiver.finishDecoding()
                     
-                    print("days after decode: \(daysAfterDecode)")
                     
-                    // convert
-                    for day in daysAfterDecode {
-                        let bigday = BigDay(entity: BigDay.entity(), insertInto: managedContext)
+                    if dataAfterDecode.count > 0 {
+                        for aDay in bigdays {
+                            let dayToRemove = aDay
+                            managedContext.delete(dayToRemove)
+                        }
                         
-                        bigday.title = day.title
-                        bigday.big_date = day.dueDate as Date
-                        bigday.repeat_type = day.repeatKind
-                        bigday.day_description = ""
-                        bigDaysFromCloud.append(bigday)
+                        do {
+                            try managedContext.save()
+                        } catch let error as NSError {
+                            print("Saving error: \(error), description: \(error.userInfo)")
+                        }
                         
+                        bigdays.removeAll()
+                        
+                        for day in dataAfterDecode {
+                            let bigday = BigDay(entity: BigDay.entity(), insertInto: managedContext)
+                            bigday.title = day.title
+                            bigday.big_date = day.dueDate as Date
+                            bigday.repeat_type = day.repeatKind
+                            bigday.day_description = ""
+                            bigdays.append(bigday)
+                        }
+                        do {
+                            try managedContext.save()
+                            tableView.reloadData()
+                        } catch let error as NSError {
+                            print("Could not save. \(error), \(error.userInfo)")
+                        }
                     }
-                    
-                    bigdays.removeAll()
-                    do {
-                        try managedContext.save()
-                        bigdays = bigDaysFromCloud
-                    } catch let error as NSError {
-                        print("Could not save. \(error), \(error.userInfo)")
-                    }
-                    
-                    tableView.reloadData()
                 }
             }
         }
     }
-    
 }
 
 

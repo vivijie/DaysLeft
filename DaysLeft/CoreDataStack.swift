@@ -27,14 +27,11 @@ class CoreDataStack {
   
   
   lazy var coordinator: NSPersistentStoreCoordinator = {
+    
     let coordinator = NSPersistentStoreCoordinator(managedObjectModel:self.managedObjectModel)
-    
-    let documentsDirectory = self.applicationDocumentsDirectory
-
-    let storeURL = documentsDirectory.appendingPathComponent("CoreData.sqlite")
-    
-    let storeOptions = [NSPersistentStoreUbiquitousContentNameKey]
-    
+    let documentsURL = self.applicationDocumentsDirectory
+    let storeURL = documentsURL.appendingPathComponent(self.modelName)
+     
     do {
       let options =
         [NSMigratePersistentStoresAutomaticallyOption: true]
@@ -77,28 +74,28 @@ class CoreDataStack {
   }()
 
     
-    class func fetchEntities(className: NSString, managedObjectContext: NSManagedObjectContext, predicate: NSPredicate?) -> [BigDay] {
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
-        let entetyDescription = NSEntityDescription.entity(forEntityName: className as String, in: managedObjectContext)
-        fetchRequest.entity = entetyDescription
-        
-        if predicate != nil {
-            fetchRequest.predicate = predicate!
-        }
-        
-        fetchRequest.returnsObjectsAsFaults = false
-        
-        var items = [BigDay]()
-        
-        do {
-            items = try managedObjectContext.fetch(fetchRequest) as! [BigDay]
-        } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-        return items
+  class func fetchEntities(className: NSString, managedObjectContext: NSManagedObjectContext, predicate: NSPredicate?) -> [BigDay] {
+    
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>()
+    let entetyDescription = NSEntityDescription.entity(forEntityName: className as String, in: managedObjectContext)
+    fetchRequest.entity = entetyDescription
+    
+    if predicate != nil {
+        fetchRequest.predicate = predicate!
     }
+    
+    fetchRequest.returnsObjectsAsFaults = false
+    
+    var items = [BigDay]()
+    
+    do {
+        items = try managedObjectContext.fetch(fetchRequest) as! [BigDay]
+    } catch let error as NSError {
+        print("Could not fetch. \(error), \(error.userInfo)")
+    }
+    
+    return items
+  }
     
   
   func saveContext() {

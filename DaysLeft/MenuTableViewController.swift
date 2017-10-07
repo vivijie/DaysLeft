@@ -40,8 +40,6 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
   }
   
   func launchEmail() {
-    
-    
     let iOSVersion = UIDevice.current.systemVersion
     let model = UIDevice.current.model
     
@@ -67,8 +65,7 @@ class MenuTableViewController: UITableViewController, MFMailComposeViewControlle
   func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
     dismiss(animated: true, completion: nil)
   }
-  
-  // To disable row select
+
   override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
     if indexPath.section == 0 && indexPath.row == 1 {
       return nil
