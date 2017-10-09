@@ -55,13 +55,14 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
     }
 
     // Add Row
-    func addBigDayViewController(controller: AddBigDayViewController, title: String, date: Date, repeat_type: String) {
+    func addBigDayViewController(controller: AddBigDayViewController, title: String, date: Date, repeat_type: String, day_description: String) {
 
       let day = BigDay(entity: BigDay.entity(), insertInto: managedContext)
 
       day.title = title
       day.big_date = date
       day.repeat_type = repeat_type
+      day.day_description = day_description
         
       do {
         bigdays.append(day)
@@ -88,6 +89,7 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
       }
 
       sortByDaysLeft()
+      saveBigDayItemsToCloud()
       self.tableView.reloadData()
       dismiss(animated: true, completion: nil)
     }
@@ -111,7 +113,6 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
       } catch let error as NSError {
           print("Saving error: \(error), description: \(error.userInfo)")
       }
-        
     }
 
 
@@ -210,7 +211,7 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
             let dayBeforeDecode = BigDayForSync()
             dayBeforeDecode.title = day.title!
             dayBeforeDecode.dueDate = day.big_date! as NSDate
-            dayBeforeDecode.day_description = "On"
+            dayBeforeDecode.day_description = day.day_description!
             dayBeforeDecode.repeatKind = day.repeat_type!
             daysBeforeDecode.append(dayBeforeDecode)
         }
@@ -287,7 +288,7 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
                             bigday.title = day.title
                             bigday.big_date = day.dueDate as Date
                             bigday.repeat_type = day.repeatKind
-                            bigday.day_description = ""
+                            bigday.day_description = day.day_description
                             bigdays.append(bigday)
                         }
                         do {

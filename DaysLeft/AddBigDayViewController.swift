@@ -8,12 +8,13 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 
 protocol AddBigDayViewControllerDelegate: class {
     func addBigDayViewControllerDidCancel(controller: AddBigDayViewController)
     func addBigDayViewController(controller: AddBigDayViewController, didFinishEditingItem item: BigDay)
-    func addBigDayViewController(controller: AddBigDayViewController, title: String, date: Date, repeat_type: String)
+    func addBigDayViewController(controller: AddBigDayViewController, title: String, date: Date, repeat_type: String, day_description: String)
 }
 
 class AddBigDayViewController: UITableViewController, UITextFieldDelegate, RepeatPickerViewControllerDelegate {
@@ -22,6 +23,7 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
     @IBOutlet weak var repeatTypeName: UILabel!
     
     var itemToEdit: BigDay?
+    let timeNotificationIdentifier = "timeNotificationIdentifier"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +34,11 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
             repeatTypeName.text = item.repeat_type
             dueDate = item.big_date!
             doneBarButton.isEnabled = true
+            if item.day_description! == "On" {
+                shouldRemindSwitch.isOn = true
+            } else {
+                shouldRemindSwitch.isOn = false
+            }
         } else {
           textField.becomeFirstResponder()
           repeatTypeName.text = "None"
@@ -49,13 +56,14 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
             item.big_date = Date()
             item.repeat_type = repeatTypeName.text
             item.big_date = dueDate
-            item.day_description = "On"
+            item.day_description = shouldRemindSwitch.isOn ? "On" : "Off"
             delegate?.addBigDayViewController(controller: self, didFinishEditingItem: item)
         } else {
             let titleToAdd = textField.text!
             let big_date = dueDate
             let repeat_type = repeatTypeName.text
-            delegate?.addBigDayViewController(controller: self, title: titleToAdd, date: big_date, repeat_type: repeat_type!)
+            let day_description = shouldRemindSwitch.isOn ? "On" : "Off"
+            delegate?.addBigDayViewController(controller: self, title: titleToAdd, date: big_date, repeat_type: repeat_type!, day_description: day_description)
         }
     }
     
@@ -109,7 +117,41 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
     }
     
     @IBAction func tapRemindSwitch(_ sender: UISwitch) {
-        print(sender.isOn)
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            if(settings.authorizationStatus == .authorized) {
+                // Schedule a push notification
+                // self.scheduleNotification()
+            } else {
+                // User has not give permission
+                UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .badge, .alert], completionHandler: { (granted, error) in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        if(granted) {
+                            // self.scheduleNotification()
+                        }
+                    }
+                })
+            }
+        }
+    }
+    
+    func scheduleNotification(notificationTitle: String) {
+        let content = UNMutableNotificationContent()
+        content.title = notificationTitle
+        content.body = "now"
+        
+        // can Trigger from calendar
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: true)
+        
+        let notificationRequest = UNNotificationRequest(identifier: timeNotificationIdentifier, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(notificationRequest) { (error) in
+            if let error = error {
+                print(error)
+            } else {
+                print("Notification scheduled!")
+            }
+        }
     }
     
     
@@ -157,6 +199,7 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
             }
         }
     }
+    
     
     func hideDatePicker() {
         if datePickerVisible {
