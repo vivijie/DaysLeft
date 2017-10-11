@@ -199,11 +199,7 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
     func saveBigDayItemsToCloud() {
         print("Saving big days to iCloud")
 
-        var daysBeforeDecode = [BigDayForSync]() {
-            didSet {
-                print("daysBeforeDecode count: \(daysBeforeDecode.count)")
-            }
-        }
+        var daysBeforeDecode = [BigDayForSync]()
 
         fetchBigDays()
         
@@ -245,7 +241,6 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
             return
         } else {
             reason = changeReason as! Int
-            print("reason is: \(reason)")
         }
         
         if (reason == NSUbiquitousKeyValueStoreServerChange) || (reason == NSUbiquitousKeyValueStoreInitialSyncChange) {

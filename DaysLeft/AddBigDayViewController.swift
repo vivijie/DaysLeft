@@ -19,9 +19,6 @@ protocol AddBigDayViewControllerDelegate: class {
 
 class AddBigDayViewController: UITableViewController, UITextFieldDelegate, RepeatPickerViewControllerDelegate {
     
-    
-    @IBOutlet weak var repeatTypeName: UILabel!
-    
     var itemToEdit: BigDay?
     let timeNotificationIdentifier = "timeNotificationIdentifier"
     
@@ -40,12 +37,15 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
                 shouldRemindSwitch.isOn = false
             }
         } else {
-          textField.becomeFirstResponder()
-          repeatTypeName.text = "None"
-          dueDate = Date()
-      }
+            textField.becomeFirstResponder()
+            repeatTypeName.text = "None"
+            dueDate = Date()
+        }
     }
     
+    
+    @IBOutlet weak var repeatTypeName: UILabel!
+   
     @IBAction func cancel() {
         delegate?.addBigDayViewControllerDidCancel(controller: self)
     }
@@ -108,6 +108,7 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
     // Date Picker
     
     @IBOutlet weak var shouldRemindSwitch: UISwitch!
+    
     @IBOutlet weak var bigDateLabel: UILabel!
     @IBOutlet weak var datePickerCell: UITableViewCell!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -117,42 +118,45 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
     }
     
     @IBAction func tapRemindSwitch(_ sender: UISwitch) {
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            if(settings.authorizationStatus == .authorized) {
-                // Schedule a push notification
-                // self.scheduleNotification()
-            } else {
-                // User has not give permission
-                UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .badge, .alert], completionHandler: { (granted, error) in
-                    if let error = error {
-                        print(error)
-                    } else {
-                        if(granted) {
-                            // self.scheduleNotification()
-                        }
-                    }
-                })
-            }
+        let title = textField.text!
+        let repeatKind = repeatTypeName.text!
+        
+        print("title: \(title), repeatKind: \(repeatKind)")
+        
+        if shouldRemindSwitch.isOn {
+            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                                    if(settings.authorizationStatus == .authorized) {
+                                        // Schedule a push notification
+                                        // self.scheduleNotification()
+                                        self.addDayNotification(title: title, dueDate: self.dueDate, repeatKind: repeatKind)
+                                    } else {
+                                        // User has not give permission
+                                        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .badge, .alert], completionHandler: { (granted, error) in
+                                            if let error = error {
+                                                print(error)
+                                            } else {
+                                                if(granted) {
+                                                    // self.scheduleNotification()
+                                                }
+                                            }
+                                        })
+                                    }
+                                }
+        } else {
+            self.removeDayNotification(dueDate: self.dueDate)
         }
     }
     
-    func scheduleNotification(notificationTitle: String) {
-        let content = UNMutableNotificationContent()
-        content.title = notificationTitle
-        content.body = "now"
-        
-        // can Trigger from calendar
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5.0, repeats: true)
-        
-        let notificationRequest = UNNotificationRequest(identifier: timeNotificationIdentifier, content: content, trigger: trigger)
-        UNUserNotificationCenter.current().add(notificationRequest) { (error) in
-            if let error = error {
-                print(error)
-            } else {
-                print("Notification scheduled!")
-            }
-        }
+    func addDayNotification(title: String, dueDate: Date, repeatKind: String) {
+        UNUserNotificationCenter.current().addNotification(title: title, dueDate: dueDate, repeatKind: repeatKind)
+        UNUserNotificationCenter.current().showNotificationStatus()
     }
+    
+    func removeDayNotification(dueDate: Date) {
+        UNUserNotificationCenter.current().removeNotification(dueDate: dueDate)
+        UNUserNotificationCenter.current().showNotificationStatus()
+    }
+
     
     
     var dueDate = Date() {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2828C33F1F61102900BC9DC9 /* RepeatPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2828C33E1F61102900BC9DC9 /* RepeatPickerViewController.swift */; };
+		284079321F8DC2D8003F5739 /* notificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284079311F8DC2D8003F5739 /* notificationManager.swift */; };
 		287F07F81F6BAE39000FC644 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287F07F71F6BAE39000FC644 /* NotificationCenter.framework */; };
 		287F07FB1F6BAE39000FC644 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 287F07FA1F6BAE39000FC644 /* TodayViewController.swift */; };
 		287F07FE1F6BAE39000FC644 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 287F07FC1F6BAE39000FC644 /* MainInterface.storyboard */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		2828C33E1F61102900BC9DC9 /* RepeatPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatPickerViewController.swift; sourceTree = "<group>"; };
+		284079311F8DC2D8003F5739 /* notificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notificationManager.swift; sourceTree = "<group>"; };
 		287F07F51F6BAE39000FC644 /* DaysLeft Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "DaysLeft Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		287F07F71F6BAE39000FC644 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		287F07FA1F6BAE39000FC644 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				C59D6A581F52782700CFACF5 /* Assets.xcassets */,
 				C59D6A5D1F52782700CFACF5 /* Info.plist */,
 				C59D6A4E1F52782700CFACF5 /* AppDelegate.swift */,
+				284079311F8DC2D8003F5739 /* notificationManager.swift */,
 				C59D6A5A1F52782700CFACF5 /* LaunchScreen.storyboard */,
 			);
 			path = DaysLeft;
@@ -299,6 +302,7 @@
 			files = (
 				28D0BD981F5FC6AA00CADE5E /* AddBigDayViewController.swift in Sources */,
 				C52218901F6E713A006DF152 /* BigDay+CoreDataProperties.swift in Sources */,
+				284079321F8DC2D8003F5739 /* notificationManager.swift in Sources */,
 				C59D6A661F52787F00CFACF5 /* BigDaysTableViewController.swift in Sources */,
 				C5B0F0BA1F6E314100F124B1 /* MenuTableViewController.swift in Sources */,
 				2828C33F1F61102900BC9DC9 /* RepeatPickerViewController.swift in Sources */,
