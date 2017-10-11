@@ -32,9 +32,9 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
             dueDate = item.big_date!
             doneBarButton.isEnabled = true
             if item.day_description! == "On" {
-                shouldRemindSwitch.isOn = true
+                shouldday_description.isOn = true
             } else {
-                shouldRemindSwitch.isOn = false
+                shouldday_description.isOn = false
             }
         } else {
             textField.becomeFirstResponder()
@@ -56,13 +56,13 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
             item.big_date = Date()
             item.repeat_type = repeatTypeName.text
             item.big_date = dueDate
-            item.day_description = shouldRemindSwitch.isOn ? "On" : "Off"
+            item.day_description = shouldday_description.isOn ? "On" : "Off"
             delegate?.addBigDayViewController(controller: self, didFinishEditingItem: item)
         } else {
             let titleToAdd = textField.text!
             let big_date = dueDate
             let repeat_type = repeatTypeName.text
-            let day_description = shouldRemindSwitch.isOn ? "On" : "Off"
+            let day_description = shouldday_description.isOn ? "On" : "Off"
             delegate?.addBigDayViewController(controller: self, title: titleToAdd, date: big_date, repeat_type: repeat_type!, day_description: day_description)
         }
     }
@@ -107,7 +107,7 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
     
     // Date Picker
     
-    @IBOutlet weak var shouldRemindSwitch: UISwitch!
+    @IBOutlet weak var shouldday_description: UISwitch!
     
     @IBOutlet weak var bigDateLabel: UILabel!
     @IBOutlet weak var datePickerCell: UITableViewCell!
@@ -117,18 +117,18 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
         dueDate = datePicker.date
     }
     
-    @IBAction func tapRemindSwitch(_ sender: UISwitch) {
+    @IBAction func tapday_description(_ sender: UISwitch) {
         let title = textField.text!
         let repeatKind = repeatTypeName.text!
         
         print("title: \(title), repeatKind: \(repeatKind)")
         
-        if shouldRemindSwitch.isOn {
+        if shouldday_description.isOn {
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                                     if(settings.authorizationStatus == .authorized) {
                                         // Schedule a push notification
                                         // self.scheduleNotification()
-                                        self.addDayNotification(title: title, dueDate: self.dueDate, repeatKind: repeatKind)
+                                        UNUserNotificationCenter.current().addNotification(title: title, dueDate: self.dueDate, repeatKind: repeatKind)
                                     } else {
                                         // User has not give permission
                                         UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .badge, .alert], completionHandler: { (granted, error) in
@@ -143,20 +143,9 @@ class AddBigDayViewController: UITableViewController, UITextFieldDelegate, Repea
                                     }
                                 }
         } else {
-            self.removeDayNotification(dueDate: self.dueDate)
+            UNUserNotificationCenter.current().removeNotification(dueDate: self.dueDate)
         }
     }
-    
-    func addDayNotification(title: String, dueDate: Date, repeatKind: String) {
-        UNUserNotificationCenter.current().addNotification(title: title, dueDate: dueDate, repeatKind: repeatKind)
-        UNUserNotificationCenter.current().showNotificationStatus()
-    }
-    
-    func removeDayNotification(dueDate: Date) {
-        UNUserNotificationCenter.current().removeNotification(dueDate: dueDate)
-        UNUserNotificationCenter.current().showNotificationStatus()
-    }
-
     
     
     var dueDate = Date() {

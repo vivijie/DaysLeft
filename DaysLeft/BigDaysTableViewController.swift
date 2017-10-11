@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import CoreData
+import UserNotifications
 
 class BigDaysTableViewController: UITableViewController, AddBigDayViewControllerDelegate {
   
@@ -276,7 +277,14 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
                             print("Saving error: \(error), description: \(error.userInfo)")
                         }
                         
+                        for day in bigdays {
+                            if day.day_description == "On" {
+                                UNUserNotificationCenter.current().removeNotification(dueDate: day.big_date!)
+                            }
+                        }
+                        
                         bigdays.removeAll()
+                        
                         
                         for day in dataAfterDecode {
                             let bigday = BigDay(entity: BigDay.entity(), insertInto: managedContext)
@@ -285,6 +293,10 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
                             bigday.repeat_type = day.repeatKind
                             bigday.day_description = day.day_description
                             bigdays.append(bigday)
+                            
+                            if bigday.day_description == "On" {
+                                UNUserNotificationCenter.current().addNotification(title: bigday.title!, dueDate: bigday.big_date!, repeatKind: bigday.repeat_type!)
+                            }
                         }
                         do {
                             try managedContext.save()
