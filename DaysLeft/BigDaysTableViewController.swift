@@ -14,11 +14,7 @@ import UserNotifications
 class BigDaysTableViewController: UITableViewController, AddBigDayViewControllerDelegate {
   
     var managedContext: NSManagedObjectContext!
-    var bigdays: [BigDay] = [] {
-        didSet {
-            print("bigdays didSet: \(bigdays.count)")
-        }
-    }
+    var bigdays: [BigDay] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,6 +100,10 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 
       let dayToDelete = bigdays[indexPath.row]
+        
+        if dayToDelete.day_description == "On" {
+            UNUserNotificationCenter.current().removeNotification(dueDate: dayToDelete.big_date!)
+        }
         
       managedContext.delete(dayToDelete)
       bigdays.remove(at: indexPath.row)
@@ -248,12 +248,6 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
             let changeKeys =  userInfo?["NSUbiquitousKeyValueStoreChangedKeysKey"] as! NSArray
             let store = NSUbiquitousKeyValueStore.default
             
-            var middleDataBetweenCloudAndLocal = [BigDay]() {
-                didSet {
-                    print("middleDataBetweenCloudAndLocal count: \(middleDataBetweenCloudAndLocal.count)")
-                }
-            }
-            
             for key in changeKeys {
                 if (key as AnyObject).isEqual("BigDayData") {
                     let data = store.object(forKey: "BigDayData") as! NSData
@@ -303,6 +297,12 @@ class BigDaysTableViewController: UITableViewController, AddBigDayViewController
                             tableView.reloadData()
                         } catch let error as NSError {
                             print("Could not save. \(error), \(error.userInfo)")
+                        }
+                    } else {
+                        for day in bigdays {
+                            if day.day_description == "On" {
+                                UNUserNotificationCenter.current().removeNotification(dueDate: day.big_date!)
+                            }
                         }
                     }
                 }
